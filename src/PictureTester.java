@@ -35,6 +35,30 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testKeepOnlyBlue()
+  {
+      Picture temple = new Picture("temple.jpg");
+      temple.explore();
+      temple.keepOnlyBlue();
+      temple.explore();
+  }
+  
+  public static void testNegate()
+  {
+	  Picture beach = new Picture("beach.jpg");
+      beach.explore();
+     beach.negate();
+      beach.explore();
+  }
+  
+  public static void testGrayScale()
+  {
+	  Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.grayScale();
+      beach.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -58,8 +82,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
-    //testKeepOnlyBlue();
+   // testZeroBlue();
+   // testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();

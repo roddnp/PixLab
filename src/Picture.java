@@ -95,6 +95,38 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void keepOnlyBlue() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setGreen(0);
+				pixelObj.setRed(0);
+			}
+		}
+	}
+	
+	public void negate(){
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setGreen(255-(pixelObj.getGreen()));
+				pixelObj.setRed(255-(pixelObj.getRed()));
+				pixelObj.setBlue(255-(pixelObj.getBlue()));
+			}
+		}
+	}
+	
+	public void grayScale(){
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setGreen((pixelObj.getGreen()) + (pixelObj.getBlue())+ (pixelObj.getRed())) / 3.0);
+				pixelObj.setRed((pixelObj.getGreen()) + (pixelObj.getBlue())+ (pixelObj.getRed())) / 3.0);
+				pixelObj.setBlue((pixelObj.getGreen()) + (pixelObj.getBlue())+ (pixelObj.getRed())) / 3.0);
+			}
+		}
+	}
+
 	/**
 	 * Method that mirrors the picture around a vertical mirror in the center of
 	 * the picture from left to right
@@ -205,9 +237,10 @@ public class Picture extends SimplePicture {
 	 */
 	public static void main(String[] args) {
 		Picture beach = new Picture("beach.jpg");
-		beach.explore();
+		//beach.explore();
 		beach.zeroBlue();
-		beach.explore();
+		//beach.keepOnlyBlue();
+		//beach.explore();
 	}
 
 } // this } is the end of class Picture, put all new methods before this
