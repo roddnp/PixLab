@@ -187,8 +187,41 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void mirrorArms() {
+		 Pixel topPixel = null;
+		 Pixel botPixel = null;
+		 Pixel[][] pixels = this.getPixels2D();
+
+		 for (int row = 155; row < 191; row++)
+		 {
+		 for (int col = 98; col < 169; col++)
+		 {
+		 topPixel = pixels[row][col];
+		 botPixel = pixels[191-row+191][col];
+		 botPixel.setColor(topPixel.getColor());
+		 }
+	}
+	
+	public void mirrorGull (){
+		int mirrorPoint = 350;
+		 Pixel leftPixel = null;
+		 Pixel rightPixel = null;
+		 Pixel[][] pixels = this.getPixels2D();
+		 for (int row = 225; row < 332; row++)
+		 {
+		 for (int col = 219; col < mirrorPoint; col++)
+		 {
+		 leftPixel = pixels[row][col];
+		 rightPixel = pixels[row][mirrorPoint - col +
+		 mirrorPoint];
+		 rightPixel.setColor(leftPixel.getColor());
+		 }
+		 }
+	}
+
 	/** Mirror just part of a picture of a temple */
 	public void mirrorTemple() {
+		int count =0;
 		int mirrorPoint = 276;
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
@@ -199,12 +232,13 @@ public class Picture extends SimplePicture {
 		for (int row = 27; row < 97; row++) {
 			// loop from 13 to just before the mirror point
 			for (int col = 13; col < mirrorPoint; col++) {
-
+				count+=1;
 				leftPixel = pixels[row][col];
 				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
 				rightPixel.setColor(leftPixel.getColor());
 			}
 		}
+		System.out.print(count);
 	}
 
 	/**
@@ -279,8 +313,8 @@ public class Picture extends SimplePicture {
 	 */
 	public static void main(String[] args) {
 		Picture beach = new Picture("beach.jpg");
-		//beach.explore();
-		beach.zeroBlue();
+		beach.explore();
+		//beach.zeroBlue();
 		//beach.keepOnlyBlue();
 		//beach.explore();
 	}
