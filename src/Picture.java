@@ -336,6 +336,24 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+	Pixel[][] copyPixels = copy.getPixels2D();
+	 Pixel topPixel = null;
+	 Pixel botPixel = null;
+	 Color botColor = null;
+	 for (int row = 0; row < copyPixels.length-1; row++)
+	 {
+	 for (int col = 0; col < copyPixels[0].length; col++)
+	 {
+	 topPixel = copyPixels[row][col];
+	 botPixel = copyPixels[row+1][col];
+	 botColor = botPixel.getColor();
+	 if (topPixel.colorDistance(botColor) > edgeDist)
+	 {
+	 pixels[row][col].setColor(Color.BLACK);
+	 }
+	 }
+	 }
+	 }
 
 	/*
 	 * Main method for testing - each class in Java can have a main method
